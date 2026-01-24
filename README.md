@@ -1,2 +1,2 @@
-# _contoso_lab
+# contoso lab
 contoso lab
